@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Runner's High Corner</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary: #0077cc;
+      --bg: #f4f4f4;
+      --text: #222;
+      --card: #fff;
+      --nav: #eee;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--primary);
+      color: white;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid white;
+      margin-bottom: 1rem;
+    }
+
+    .tagline {
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      background: var(--nav);
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    nav input {
+      padding: 0.5rem;
+      flex: 1;
+      min-width: 200px;
+      max-width: 300px;
+    }
+
+    nav button,
+    nav a {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .about, .subscribe {
+      padding: 1rem 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .share {
+      margin-top: 1rem;
+    }
+
+    .share i {
+      margin-right: 0.5rem;
+      cursor: pointer;
+    }
+
+    .subscribe input {
+      padding: 0.5rem;
+      width: 60%;
+      max-width: 300px;
+      margin-right: 0.5rem;
+    }
+
+    .subscribe button {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      background: #111;
+      color: #eee;
+      padding: 2rem 1rem;
+    }
+
+    .socials a {
+      margin: 0 0.5rem;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* Dark Mode */
+    .dark {
+      --bg: #121212;
+      --text: #eee;
+      --card: #1e1e1e;
+      --nav: #333;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .subscribe input {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.postimg.cc/3Nq3bY5L/IMG-20250406-WA0019.jpg" alt="Mike Nkomo" class="profile-img" />
+    <h1>Runner's High Corner</h1>
+    <p class="tagline">In it for the long run</p>
+  </header>
+
+  <nav>
+    <input type="text" id="searchBar" placeholder="Search articles..." />
+    <button onclick="toggleTheme()">Toggle Dark Mode</button>
+    <a href="https://medium.com/@nkomomike005" target="_blank">Write Article</a>
+  </nav>
+
+  <section class="about">
+    <h2>About Me</h2>
+    <p>I'm Mike Nkomo, a passionate distance runner and coach who writes about smart training, injury prevention, and real experiences on the road. Through years of trial and error, I’ve learned that it’s not just about grinding harder—it’s about training smarter.</p>
+  </section>
+
+  <section id="articles" class="grid"></section>
+
+  <section class="subscribe">
+    <h3>Subscribe for updates</h3>
+    <input type="email" placeholder="Your email" />
+    <button>Subscribe</button>
+  </section>
+
+  <footer>
+    <div class="socials">
+      <a href="https://www.instagram.com/nkomomike003" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/nkomovusi" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/27814750707" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>Contact me on WhatsApp for coaching: 081 475 0707</p>
+  </footer>
+
+  <script>
+    const articles = [
+      {
+        title: "The Cargo Cults of Distance Running",
+        url: "https://medium.com/@nkomomike005/the-cargo-cults-of-distance-running-why-chasing-trends-wont-get-you-to-the-finish-line-faster-7c2f18ce33dd",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*lvKzW5U-rsC4ePQU_VppYw.png"
+      },
+      {
+        title: "Injury-Prone? Here's How to Spend More Time on the Road",
+        url: "https://medium.com/@nkomomike005/injury-prone-heres-how-you-can-spend-more-time-on-the-road-than-on-the-physiotherapist-s-bed-86937ff8c8a0",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*GWRHSEJzqv-eo0FyoYV4jQ.jpeg"
+      },
+      {
+        title: "The Fundamentals of Long Distance Training",
+        url: "https://medium.com/@nkomomike005/the-fundamentals-of-long-distance-training-a5ea574c271d",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*NL8-VcazjGcBzHyxg-fq_A.png"
+      },
+      {
+        title: "How I Ran a Sub-4 Silver at Two Oceans Ultra",
+        url: "https://medium.com/@nkomomike005/title-how-i-ran-a-sub-4-silver-at-the-two-oceans-ultra-off-a-36km-long-run-6b6a5fd67397",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*a28sMlDBTeTL4HScvAzTbw.jpeg"
+      },
+      {
+        title: "He Ran Sub-2:20 Marathon Nearly Walking the Long Run",
+        url: "https://medium.com/@nkomomike005/he-ran-a-sub-2-20-marathon-nearly-walking-the-long-run-37459835ad04",
+        thumbnail: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*5KUL4NddRD9IszA1T1e5ow.jpeg"
+      }
+    ];
+
+    function loadArticles(filter = "") {
+      const container = document.getElementById("articles");
+      container.innerHTML = "";
+      articles
+        .filter(article => article.title.toLowerCase().includes(filter.toLowerCase()))
+        .forEach(article => {
+          const card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <img src="${article.thumbnail}" alt="">
+            <h3>${article.title}</h3>
+            <a href="${article.url}" target="_blank">Read More</a>
+            <div class="share">
+              <i class="fab fa-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${article.url}')"></i>
+              <i class="fab fa-twitter" onclick="window.open('https://twitter.com/intent/tweet?url=${article.url}')"></i>
+              <i class="fab fa-whatsapp" onclick="window.open('https://api.whatsapp.com/send?text=${article.url}')"></i>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+    }
+
+    document.getElementById("searchBar").addEventListener("input", e => {
+      loadArticles(e.target.value);
+    });
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+    }
+
+    loadArticles();
+  </script>
+</body>
+  </html>
